@@ -5,7 +5,6 @@ import com.zwwhnly.mybatisaction.type.Enabled;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.*;
 
@@ -65,14 +64,7 @@ public class SysUserMapperTest extends BaseMapperTest {
         try {
             SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
 
-            SysUser sysUser = new SysUser();
-            sysUser.setUserName("test1");
-            sysUser.setUserPassword("123456");
-            sysUser.setUserEmail("test@mybatis.tk");
-            sysUser.setUserInfo("test info");
-            // 正常情况下应该读入一张图片保存到byte数组中
-            sysUser.setHeadImg(new byte[]{1, 2, 3});
-            sysUser.setCreateTime(new Date());
+            SysUser sysUser = createUser();
 
             // 这里的返回值result是执行的SQL影响的行数
             int result = sysUserMapper.insert(sysUser);
@@ -89,6 +81,18 @@ public class SysUserMapperTest extends BaseMapperTest {
         }
     }
 
+    private SysUser createUser() {
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName("李祥平");
+        sysUser.setUserPassword("123456");
+        sysUser.setUserEmail("test@mybatis.tk");
+        sysUser.setUserInfo("test info");
+        // 正常情况下应该读入一张图片保存到byte数组中
+        sysUser.setHeadImg(new byte[]{1, 2, 3});
+        sysUser.setCreateTime(new Date());
+        return sysUser;
+    }
+
     @Test
     public void testInsertUseGeneratedKeys() {
         SqlSession sqlSession = getSqlSession();
@@ -96,14 +100,7 @@ public class SysUserMapperTest extends BaseMapperTest {
         try {
             SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
 
-            SysUser sysUser = new SysUser();
-            sysUser.setUserName("test1");
-            sysUser.setUserPassword("123456");
-            sysUser.setUserEmail("test@mybatis.tk");
-            sysUser.setUserInfo("test info");
-            // 正常情况下应该读入一张图片保存到byte数组中
-            sysUser.setHeadImg(new byte[]{1, 2, 3});
-            sysUser.setCreateTime(new Date());
+            SysUser sysUser = createUser();
 
             // 这里的返回值result是执行的SQL影响的行数
             int result = sysUserMapper.insertUseGeneratedKeys(sysUser);
@@ -124,14 +121,7 @@ public class SysUserMapperTest extends BaseMapperTest {
         try {
             SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
 
-            SysUser sysUser = new SysUser();
-            sysUser.setUserName("test1");
-            sysUser.setUserPassword("123456");
-            sysUser.setUserEmail("test@mybatis.tk");
-            sysUser.setUserInfo("test info");
-            // 正常情况下应该读入一张图片保存到byte数组中
-            sysUser.setHeadImg(new byte[]{1, 2, 3});
-            sysUser.setCreateTime(new Date());
+            SysUser sysUser = createUser();
 
             // 这里的返回值result是执行的SQL影响的行数
             int result = sysUserMapper.insertUseSelectKey(sysUser);

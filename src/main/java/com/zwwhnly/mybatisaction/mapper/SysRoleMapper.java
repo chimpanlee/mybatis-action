@@ -3,9 +3,16 @@ package com.zwwhnly.mybatisaction.mapper;
 import com.zwwhnly.mybatisaction.model.SysRole;
 import com.zwwhnly.mybatisaction.model.SysRoleExtend;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.cache.decorators.FifoCache;
 
 import java.util.List;
 
+//@CacheNamespace(
+//        eviction = FifoCache.class,
+//        flushInterval = 60000,
+//        size = 512,
+//        readWrite=true)
+@CacheNamespaceRef(SysRoleMapper.class)
 public interface SysRoleMapper {
     @Select("SELECT id,role_name,enabled,create_by,create_time FROM sys_role WHERE id = #{id}")
     SysRole selectById(Long id);

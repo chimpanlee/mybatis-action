@@ -88,6 +88,7 @@ public interface SysUserMapper {
      * @return
      */
     List<SysRole> selectRolesByUserIdAndRoleEnabled(@Param("userId") Long userId, @Param("enabled") Integer enabled);
+//    List<SysRole> selectRolesByUserIdAndRoleEnabled(Long userId, Integer enabled);
 
     /**
      * 根据用户id和角色的enabled状态获取用户的角色

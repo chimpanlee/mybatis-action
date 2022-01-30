@@ -13,6 +13,7 @@ public class SysUserExtend extends SysUser {
      */
     private List<SysRoleExtend> sysRoleList;
 
+
     public SysRole getSysRole() {
         return sysRole;
     }
